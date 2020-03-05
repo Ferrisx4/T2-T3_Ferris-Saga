@@ -1,6 +1,10 @@
 # Tripal 2 to 3 Migration - Condensed
 This will be ***the*** document to follow along if you just want to do the migration. No fluff!
-
+It was most recently tested with:
+ - the "new codebase" (circa late February 2020)
+ - a slightly older database dump (July 30, 2019, md5: 
+ `77966af4479af6a1dd1b6510d61e2c70`)
+ - ElementaryOS (Basically Ubuntu)
 ### Table of Contents
 1) [Pre-migration scripts](#1-pre-migration-scripts)
 2) [Pre-migration manual steps](#2-pre-migration-manual-steps)
@@ -10,10 +14,11 @@ This will be ***the*** document to follow along if you just want to do the migra
 
 ## 1. Pre-migration Scripts
 1. Install the Migration Module (i5k). In the modules directory:
-`git clone git@github.com:NAL-i5K/T2-to-T3-Upgrade-Guide.git`
+
+   `git clone git@github.com:NAL-i5K/T2-to-T3-Upgrade-Guide.git`
 2. Run the scripts (these may be combined eventually)
-`sh pre-migration.sh`
-`sh pre-migration_step2.sh`
+   `sh pre-migration.sh`
+   `sh pre-migration_step2.sh`
 
 ## 2. Pre-migration manual steps
 1. Put the site into *Maintenance Mode*
