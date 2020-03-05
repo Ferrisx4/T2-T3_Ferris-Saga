@@ -1,12 +1,12 @@
 # Tripal 2 to 3 Migration - Condensed
-This will be *the* document to follow along if you just want to do the migration. No fluff!
+This will be ***the*** document to follow along if you just want to do the migration. No fluff!
 
-## Summary
-1) Pre-migration scripts
-2) Pre-migration manual steps
-3) The migration
-4) Post-migration scripts
-5) Post-migration manual steps
+### Table of Contents
+1) [Pre-migration scripts](#1-pre-migration-scripts)
+2) [Pre-migration manual steps](#2-pre-migration-manual-steps)
+3) [The migration](#3-the-migration)
+4) [Post-migration scripts](#4-post-migration-scripts)
+5) [Post-migration manual steps](#5-post-migration-steps)
 
 ## 1. Pre-migration Scripts
 1. Install the Migration Module (i5k). In the modules directory:
@@ -63,6 +63,7 @@ This will be *the* document to follow along if you just want to do the migration
    - For "Organism" and "Analysis" types, navigate to their respective 'Manage Display' tabs and organize
 
 ##### HTML
+The HTML formats have gotten stale (id vs machine_name). Full description [here](https://github.com/NAL-i5K/general_issues/issues/28#issuecomment-469293011)
 1. Navigate to `admin/config/content/formats`
 2. Rename text formats:
    - 'Filtered HTML' -> 'Filtered HTML Old'
