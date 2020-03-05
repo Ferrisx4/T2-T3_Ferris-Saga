@@ -195,6 +195,8 @@ drush pm-disable i5k_features
 > ~~DELETE FROM cache_bootstrap WHERE cid='system_list';~~
 
 Continue to follow along with the Official Guide
+  Navigate to the directory where the tripal module is stored: `sites/all/modules/contrib`
+> rm -rf tripal/<br>
 > drush pm-download tripal-7.x-3.1<br>
 > drush pm-enable tripal<br>
 > drush pm-enable tripal_chado
