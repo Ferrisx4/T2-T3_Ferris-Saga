@@ -337,3 +337,5 @@ A patch can be found in this repository to apply to the site's code. Leaving thi
 To apply this patch, run this command:
 `TODO what command to run/how do I into patches`
 
+### Permissions
+Review the permissions at `admin/people/permissions`. Most importantly, "View Content" permissions must be checked for Anonymous users for every Tripal Content Type. By default, only "Tripal Administrators" are given this permission.
