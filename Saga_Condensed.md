@@ -35,10 +35,10 @@ It was most recently tested with:
    `rm -rf tripal/`
 4. Get Tripal 3
 
-   `drush pm-download tripal-7.x-3.3` OR `git clone https://github.com/tripal/tripal.git`
-   `drush pm-enable tripal`
-   `drush pm-enable tripal_chado`
-   `drush updatedb` just in case (it will complain that you should, but might not have updates)
+   a. `drush pm-download tripal-7.x-3.3` OR `git clone https://github.com/tripal/tripal.git`
+   b. `drush pm-enable tripal`
+   c. `drush pm-enable tripal_chado`
+   d. `drush updatedb` just in case (it will complain that you should, but might not have updates)
 ## 3. The migration
 *Most of this takes place on the website*
 1. Prepare the site with Tripal and Chado
