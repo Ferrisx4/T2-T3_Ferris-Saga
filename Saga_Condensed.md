@@ -38,6 +38,7 @@ It was most recently tested with:
  - `drush pm-download tripal-7.x-3.3` OR `git clone https://github.com/tripal/tripal.git`
  - `drush pm-enable tripal`
  - `drush pm-enable tripal_chado`
+ - `drush pm-enable tripal_core, tripal_views, tripal_db, tripal_cv, tripal_analysis, tripal_organism, tripal_feature, tripal_pub, tripal_stock`
  - `drush updatedb` just in case (it will complain that you should, but might not have updates)
 ## 3. The migration
 *Most of this takes place on the website*
