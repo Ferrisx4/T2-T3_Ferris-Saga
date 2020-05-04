@@ -73,6 +73,14 @@ It was most recently tested with:
 3. Enable fields
    - For "Organism" and "Analysis" types, navigate to their respective 'Manage Display' tabs and organize
 
+##### Gene JBrowse Fields
+This module makes a field appear on Gene/Feature pages that consists of an iframe linking to the related jbrowse instance, configured by the module.
+1. Install the module into your modules file
+   - `git clone git@github.com:Ferrisx4/gene_jbrowse_field.git`
+   - `drush pm-enable gene_jbrowse_field`
+2. Navigate to the configuration page - Tripal -> Extensions -> Gene Jbrowse Field Configuration
+
+
 ##### HTML
 The HTML formats have gotten stale (id vs machine_name). Full description [here](https://github.com/NAL-i5K/general_issues/issues/28#issuecomment-469293011)
 1. Navigate to `admin/config/content/formats`
