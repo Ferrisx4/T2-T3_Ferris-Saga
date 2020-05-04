@@ -35,7 +35,7 @@ It was most recently tested with:
    `rm -rf tripal/`
 4. Get Tripal 3
 
-   `drush pm-download tripal-7.x-3.3` OR `https://github.com/tripal/tripal.git`
+   `drush pm-download tripal-7.x-3.3` OR `git clone https://github.com/tripal/tripal.git`
    `drush pm-enable tripal`
    `drush pm-enable tripal_chado`
    `drush updatedb` just in case (it will complain that you should, but might not have updates)
