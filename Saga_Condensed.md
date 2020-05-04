@@ -28,8 +28,8 @@ It was most recently tested with:
 
 2. Disable Tripal 2 and related modules
 
-   `drush pm-disable tripal_core -y`
-   `drush pm-disable i5k_features -y`
+ - `drush pm-disable tripal_core -y`
+ - `drush pm-disable i5k_features -y`
 3. Navigate to where the Tripal module is
 
    `rm -rf tripal/`
