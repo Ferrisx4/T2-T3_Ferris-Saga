@@ -65,14 +65,13 @@ It was most recently tested with:
 1. Enable
    - This is already done in the `post_migration.sh` script
 
-2. Add fields
-   - Navigate to the T3 Organism 'Manage Fields' page, found here:
-   `admin/structure/bio_data`
-   Click "Check for new fields"
-   Do the same for 'Analysis' type
+2. Add fields for Organism and Analysis
+   - Navigate to the T3 fields page, `admin/structure/bio_data`, and update the fields for Organism and Analysis
+   - Scroll to 'Organism', click 'Manage Fields', and click "Check for new fields" on the new page.
+   - Return to the previous page, scroll to Analysis, click 'Manage Fields', and click "Check for new fields" on the new page.
 
 3. Enable fields
-   - For "Organism" and "Analysis" types, navigate to their respective 'Manage Display' tabs and organize
+   - For "Organism" and "Analysis" types, navigate to their respective 'Manage Display' tabs and organize the fields. This is purely a design choice at this point.
 
 ##### Gene JBrowse Fields
 This module makes a field appear on Gene/Feature pages that consists of an iframe linking to the related jbrowse instance, configured by the module.
