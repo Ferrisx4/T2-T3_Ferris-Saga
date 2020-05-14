@@ -17,7 +17,8 @@ It was most recently tested with:
 
    `git clone git@github.com:NAL-i5K/T2-to-T3-Upgrade-Guide.git`
 2. Run the scripts (these may be combined eventually)
-
+   - `cd T2-to-T3-Upgrade-Guide/`
+   - `chmod +x *.sh`
    - `sh pre-migration.sh`
    - `sh pre-migration_step2.sh`
 
@@ -44,7 +45,9 @@ It was most recently tested with:
 *Most of this takes place on the website*
 1. Prepare the site with Tripal and Chado
    - Alerts on the site will have you prepare the site for Tripal and Chado
-2. Perform the migration *(mostly follow on-screen instructions)*
+2. Upgrade the site with Chado 1.3 (Currently 1.2)
+   - Upgrade page: `http://i5k2.local/admin/tripal/storage/chado/install`
+3. Perform the migration *(mostly follow on-screen instructions)*
    - Navigate to `admin/tripal/storage/chado/migrate`
    - Step 1 (Ignore) - Talks about Legacy modules (not relevant on i5k)
    - Step 2 "Migrate all"
