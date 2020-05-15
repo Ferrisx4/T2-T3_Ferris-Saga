@@ -19,8 +19,8 @@ It was most recently tested with:
 2. Run the scripts (these may be combined eventually)
    - `cd T2-to-T3-Upgrade-Guide/`
    - `chmod +x *.sh`
-   - `sh pre-migration.sh`
-   - `sh pre-migration_step2.sh`
+   - `sh pre_migration.sh`
+   - `sh pre_migration_step2.sh`
 
 ## 2. Pre-migration manual steps
 1. Put the site into *Maintenance Mode*
