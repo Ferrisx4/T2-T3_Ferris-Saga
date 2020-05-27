@@ -41,6 +41,9 @@ It was most recently tested with:
  - `drush pm-enable tripal_chado`
  - `drush pm-enable tripal_core, tripal_views, tripal_db, tripal_cv, tripal_analysis, tripal_organism, tripal_feature, tripal_pub, tripal_stock`
  - `drush updatedb` just in case (it will complain that you should, but might not have updates)
+
+5. Directory Creation
+- ensure that the directory  `sites/default/files/tripal_organism` exists and is writable by the webserver within the Drupal installation
 ## 3. The migration
 *Most of this takes place on the website*
 1. Prepare the site with Tripal and Chado
@@ -53,7 +56,7 @@ It was most recently tested with:
    - Step 2 "Migrate all"
      - May take a while
    - Step 3 (Ignore) - More options for Legacy Templates
-   - Step 4 (Only select first two for now)
+   - Step 4 (Only select first two of "All" for now)
      - [x] Copy Title over to Tripal v3 Content
      - [x] Migrate URL Alias to Tripal v3 Content
      - [ ] Unpublish Tripal v2 Content
