@@ -23,6 +23,7 @@ Following [Bradford's Guide](https://github.com/NAL-i5K/T2-to-T3-Upgrade-Guide)
     ```sql
         create user tripal with password 'tripal';
         create database tripal;
+        alter database tripal owner to tripal;
         grant all on database "tripal" to tripal;
     ```
 
