@@ -82,7 +82,7 @@ It was most recently tested with:
 ##### Gene JBrowse Fields
 This module makes a field appear on Gene/Feature pages that consists of an iframe linking to the related jbrowse instance, configured by the module.
 1. Install the module into your modules file
-   - `git clone git@github.com:Ferrisx4/gene_jbrowse_field.git`
+   - `git clone git@github.com:NAL-i5K/gene_jbrowse_field.git`
    - `drush pm-enable gene_jbrowse_field`
 2. Navigate to the configuration page - Tripal -> Extensions -> Gene Jbrowse Field Configuration
 
