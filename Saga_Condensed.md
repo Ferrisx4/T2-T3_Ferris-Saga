@@ -47,7 +47,7 @@ It was most recently tested with:
 ## 3. The migration
 *Most of this takes place on the website*
 1. Prepare the site with Tripal and Chado
-   - Alerts on the site will have you prepare the site for Tripal and Chado
+   - Alerts on the site will have you prepare the site for Tripal and Chado, or navigate to `admin/tripal/storage/chado/prepare` and follow the on-screen instructions
 2. Upgrade the site with Chado 1.3 (Currently 1.2)
    - Upgrade page: `http://i5k2.local/admin/tripal/storage/chado/install`
 3. Perform the migration *(mostly follow on-screen instructions)*
