@@ -36,7 +36,8 @@ It was most recently tested with:
    `rm -rf tripal/`
 4. Get Tripal 3
 
- - `drush pm-download tripal-7.x-3.3` OR `git clone https://github.com/tripal/tripal.git`
+ - ~~`drush pm-download tripal-7.x-3.3` OR `git clone https://github.com/tripal/tripal.git`~~
+ - `git clone https://github.com/Ferrisx4/tripal` (until this fork gets accepted)
  - `drush pm-enable tripal`
  - `drush pm-enable tripal_chado`
  - `drush pm-enable tripal_core, tripal_views, tripal_db, tripal_cv, tripal_analysis, tripal_organism, tripal_feature, tripal_pub, tripal_stock`
