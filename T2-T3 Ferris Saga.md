@@ -126,6 +126,9 @@ This drops all the indexes that it can. This is useful and necessary because the
 
 ¿Do we need to modify the Full and Filtered HTML filters, described [here](https://github.com/NAL-i5K/general_issues/issues/28)? **YES**
 
+Delete Views Integrations (There are duplicates which messes up the Tripal upgrade)
+ - Navigate to `/admin/tripal/views-integration`
+ - Click **Delete ALL Integrations** and confirm
 <hr>
 
 ## Tripal Upgrade

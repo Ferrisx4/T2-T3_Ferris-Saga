@@ -25,32 +25,35 @@ It was most recently tested with:
 ## 2. Pre-migration manual steps
 1. Put the site into *Maintenance Mode*
 
-   `drush vset site_offline 1` 
+   - `drush vset site_offline 1` 
 
-2. Disable Tripal 2 and related modules
+2. Delete all Views integrations
+   - Navigate to `admin/tripal/views-integration`
+   - Click **Delete ALL Integrations** and confirm
 
- - `drush pm-disable tripal_core -y`
- - `drush pm-disable i5k_features -y`
-3. Navigate to where the Tripal module is
+3. Disable Tripal 2 and related modules
+   - `drush pm-disable tripal_core -y`
+   - `drush pm-disable i5k_features -y`
+4. Navigate to where the Tripal module is
 
    `rm -rf tripal/`
-4. Get Tripal 3
+5. Get Tripal 3
 
- - ~~`drush pm-download tripal-7.x-3.3` OR `git clone https://github.com/tripal/tripal.git`~~
- - `git clone https://github.com/Ferrisx4/tripal` (until this fork gets accepted)
- - `drush pm-enable tripal`
- - `drush pm-enable tripal_chado`
- - `drush pm-enable tripal_core, tripal_views, tripal_db, tripal_cv, tripal_analysis, tripal_organism, tripal_feature, tripal_pub, tripal_stock`
- - `drush updatedb` just in case (it will complain that you should, but might not have updates)
+   - ~~`drush pm-download tripal-7.x-3.3` OR `git clone https://github.com/tripal/tripal.git`~~
+   - `git clone https://github.com/Ferrisx4/tripal` (until this fork gets accepted)
+   - `drush pm-enable tripal`
+   - `drush pm-enable tripal_chado`
+   - `drush pm-enable tripal_core, tripal_views, tripal_db, tripal_cv, tripal_analysis, tripal_organism, tripal_feature, tripal_pub, tripal_stock`
+   - `drush updatedb` just in case (it will complain that you should, but might not have updates)
 
-5. Directory Creation
-- ensure that the directory  `sites/default/files/tripal_organism` exists and is writable by the webserver within the Drupal installation
+6. Directory Creation
+   - ensure that the directory  `sites/default/files/tripal_organism` exists and is writable by the webserver within the Drupal installation
 ## 3. The migration
 *Most of this takes place on the website*
 1. Prepare the site with Tripal and Chado
    - Alerts on the site will have you prepare the site for Tripal and Chado, or navigate to `admin/tripal/storage/chado/prepare` and follow the on-screen instructions
 2. Upgrade the site with Chado 1.3 (Currently 1.2)
-   - Upgrade page: `http://i5k2.local/admin/tripal/storage/chado/install`
+   - Upgrade page: `admin/tripal/storage/chado/install`
 3. Perform the migration *(mostly follow on-screen instructions)*
    - Navigate to `admin/tripal/storage/chado/migrate`
    - Step 1 (Ignore) - Talks about Legacy modules (not relevant on i5k)
