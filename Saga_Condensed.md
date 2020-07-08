@@ -19,8 +19,8 @@ It was most recently tested with:
 2. Run the scripts (these may be combined eventually)
    - `cd T2-to-T3-Upgrade-Guide/`
    - `chmod +x *.sh`
-   - `sh pre_migration.sh`
-   - `sh pre_migration_step2.sh`
+   - `./pre_migration.sh`
+   - `./pre_migration_step2.sh`
 
 ## 2. Pre-migration manual steps
 1. Put the site into *Maintenance Mode*
@@ -43,7 +43,7 @@ It was most recently tested with:
    - `git clone https://github.com/Ferrisx4/tripal` (until this fork gets accepted)
    - `drush pm-enable tripal`
    - `drush pm-enable tripal_chado`
-   - `drush pm-enable tripal_core, tripal_views, tripal_db, tripal_cv, tripal_analysis, tripal_organism, tripal_feature, tripal_pub, tripal_stock`
+   - `drush pm-enable tripal_core, tripal_views, tripal_db, tripal_cv, tripal_analysis, tripal_organism, tripal_feature, tripal_pub, tripal_stock, tripal_ds`
    - `drush updatedb` just in case (it will complain that you should, but might not have updates)
 
 6. Directory Creation
@@ -54,21 +54,26 @@ It was most recently tested with:
    - Alerts on the site will have you prepare the site for Tripal and Chado, or navigate to `admin/tripal/storage/chado/prepare` and follow the on-screen instructions
 2. Upgrade the site with Chado 1.3 (Currently 1.2)
    - Upgrade page: `admin/tripal/storage/chado/install`
-3. Perform the migration *(mostly follow on-screen instructions)*
+
+3. Database Cleanup (Manual)
+   - Log into the database (psql, phppgadmin, etc.)
+   - Delete from the `tripal_entity` table any rows where the title has "test" or TEST"
+     - *These have been causing errors on certain versions of the database. We may be able to remove this step later on*
+4. Perform the migration *(mostly follow on-screen instructions)*
    - Navigate to `admin/tripal/storage/chado/migrate`
    - Step 1 (Ignore) - Talks about Legacy modules (not relevant on i5k)
    - Step 2 "Migrate all"
      - May take a while
    - Step 3 (Ignore) - More options for Legacy Templates
-   - Step 4 (Only select first two of "All" for now)
+   - Step 4 (Only select first two of "All" for now) - *Note: this may take very long*
      - [x] Copy Title over to Tripal v3 Content
      - [x] Migrate URL Alias to Tripal v3 Content
      - [ ] Unpublish Tripal v2 Content
      - [ ] Delete Tripal v2 Content 
 
 ## 4. Post-migration scripts
-1. `sh post_migration.sh`
-2. `sh post_migration_step2.sh`
+1. `./post_migration.sh`
+2. `./post_migration_step2.sh`
 
 ## 5. Post Migration Steps
 ##### Tripal Manage Analyses
@@ -76,9 +81,9 @@ It was most recently tested with:
    - This is already done in the `post_migration.sh` script
 
 2. Add fields for Organism and Analysis
-   - Navigate to the T3 fields page, `admin/structure/bio_data`, and update the fields for Organism and Analysis
-   - Scroll to 'Organism', click 'Manage Fields', and click "Check for new fields" on the new page.
-   - Return to the previous page, scroll to Analysis, click 'Manage Fields', and click "Check for new fields" on the new page.
+   - Navigate to the T3 fields page, `admin/structure/bio_data`, and update the fields for Organism and Analysis:
+     - Scroll to 'Organism', click 'Manage Fields', and click "Check for new fields" on the new page.
+     - Return to the previous page, scroll to Analysis, click 'Manage Fields', and click "Check for new fields" on the new page.
 
 3. Enable fields
    - For "Organism" and "Analysis" types, navigate to their respective 'Manage Display' tabs and organize the fields. This is purely a design choice at this point.
@@ -89,7 +94,57 @@ This module makes a field appear on Gene/Feature pages that consists of an ifram
    - `git clone git@github.com:NAL-i5K/gene_jbrowse_field.git`
    - `drush pm-enable gene_jbrowse_field`
 2. Navigate to the configuration page - Tripal -> Extensions -> Gene Jbrowse Field Configuration
+   - In the URL Template field, paste the following:
+    `https://apollo.nal.usda.gov/apollo/[Genus]%20[species]/jbrowse/?loc=[gene name]-RA` 
+    and click Save. 
+3. Navigate to `admin/structure/bio_data` and click on "manage fields" for the Gene type.
+   - Click on ```+ Check for new fields```.
+   - `local__jbrowse_link` should be added, along with a few others.
 
+Gene pages should now render with an iframe featuring the corresponding Apollo instance for that organism.
+
+##### Tripal 3 Species Glossary
+This module provides a glossary of all species on the site. This gets created as a view.
+1. Navigate to the directory where you store custom/contributed modules
+2. `git clone git@github.com:NAL-i5K/t3_species_glossary.git`
+3. `drush pm-enable t3_species_glossary -y`
+
+##### Organism, Analysis, and Gene page configuration
+In order to make our pages look presentable, we need to modify the current way they are configured.
+
+The settings for the page configuration can be found at `admin/structure/bio_data`.
+Click on the **Manage Fields** and **Manage Display** links/tabs for each content type below. New groups may have to be added in order to satisfy the structure outlined below.
+
+ 1. On the *Manage Display* page, the layout at the bottom may not be set correctly. Choose 'Tripal Feature Layout' from the dropdown. Do this for each content type (Organism, Analysis, Gene).
+ 2. Use the following hierarchies to define what fields should be shown in what order and under what category (category is first level).
+###### Organism
+ - Summary
+   - Abbreviation (?)
+   - Genus
+   - Species
+   - Common name
+   - Description
+   - Image
+   - Image credit and license/attribution
+ - Analyses
+   - Link
+ - Assembly Stats
+   - Contig N50
+   - Scaffold N50
+   - Number of Genes
+   - GC Content
+ - Other information
+   - Community contact
+   - External links
+
+###### Analysis
+ - Summary
+   - Analysis name
+   - Software
+   - Materials and Methods
+   - Organism
+
+###### Gene
 
 ##### HTML
 The HTML formats have gotten stale (id vs machine_name). Full description [here](https://github.com/NAL-i5K/general_issues/issues/28#issuecomment-469293011)
