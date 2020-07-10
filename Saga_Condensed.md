@@ -108,6 +108,10 @@ This module provides a glossary of all species on the site. This gets created as
 1. Navigate to the directory where you store custom/contributed modules
 2. `git clone git@github.com:NAL-i5K/t3_species_glossary.git`
 3. `drush pm-enable t3_species_glossary -y`
+This creates a page at `/t3_species_glossary` (this can be changed later). Now we must point the main menu "Organisms" button to this page instead of `/species`.
+4. Navigate to `/admin/structure/menu/manage/main-menu`
+5. Click on the "edit" link for "Organisms" (second in list)
+6. Change the Path to `t3_species_glossary` and click Save
 
 ##### Organism, Analysis, and Gene page configuration
 In order to make our pages look presentable, we need to modify the current way they are configured.
