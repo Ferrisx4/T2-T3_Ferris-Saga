@@ -117,10 +117,13 @@ This creates a page at `/t3_species_glossary` (this can be changed later). Now w
 In order to make our pages look presentable, we need to modify the current way they are configured.
 
 The settings for the page configuration can be found at `admin/structure/bio_data`.
-Click on the **Manage Fields** and **Manage Display** links/tabs for each content type below. New groups may have to be added in order to satisfy the structure outlined below.
+Click on the **Manage Fields** and **Manage Display** links/tabs for each content type below. New groups may have to be added in order to satisfy the structure outlined below, which can be done on the Manage Display tab.
 
- 1. On the *Manage Display* page, the layout at the bottom may not be set correctly. Choose 'Tripal Feature Layout' from the dropdown. Do this for each content type (Organism, Analysis, Gene).
+ 1. On the *Manage Display* page, the layout at the bottom may not be set correctly. **If and only if** this is the case, perform the following two steps
+    - Choose 'Tripal Feature Layout' from the dropdown and Save
+    - At the top, after saving, click `+ Apply Default Tripal Layout (will reset current layout)`
  2. Use the following hierarchies to define what fields should be shown in what order and under what category (category is first level).
+ 
 ###### Organism
  - Summary
    - Abbreviation (?)
