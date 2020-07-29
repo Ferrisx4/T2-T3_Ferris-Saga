@@ -80,13 +80,13 @@ It was most recently tested with:
 1. Enable
    - This is already done in the `post_migration.sh` script
 
-2. Add fields for Organism and Analysis
-   - Navigate to the T3 fields page, `admin/structure/bio_data`, and update the fields for Organism and Analysis:
+2. Add fields for Organism, Analysis, Gene, and mRNA
+   - Navigate to the T3 fields page, `admin/structure/bio_data`, and update the fields for Organism, Analysis, Gene, and mRNA
      - Scroll to 'Organism', click 'Manage Fields', and click "Check for new fields" on the new page.
      - Return to the previous page, scroll to Analysis, click 'Manage Fields', and click "Check for new fields" on the new page.
 
 3. Enable fields
-   - For "Organism" and "Analysis" types, navigate to their respective 'Manage Display' tabs and organize the fields. This is purely a design choice at this point.
+   - For each of these content types, navigate to their respective 'Manage Display' tabs and organize the fields. This is purely a design choice at this point. An outline for this is provided in the [Tripal Content Type configuration](#Tripal-Content-Type-configuration) section.
 
 ##### Gene JBrowse Fields
 This module makes a field appear on Gene/Feature pages that consists of an iframe linking to the related jbrowse instance, configured by the module.
@@ -113,7 +113,7 @@ This creates a page at `/t3_species_glossary` (this can be changed later). Now w
 5. Click on the "edit" link for "Organisms" (second in list)
 6. Change the Path to `t3_species_glossary` and click Save
 
-##### Organism, Analysis, and Gene page configuration
+##### Tripal Content Type configuration
 In order to make our pages look presentable, we need to modify the current way they are configured.
 
 The settings for the page configuration can be found at `admin/structure/bio_data`.
