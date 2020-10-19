@@ -1,10 +1,6 @@
 # Tripal 2 to 3 Migration - Condensed
 This will be ***the*** document to follow along if you just want to do the migration. No fluff!
-It was most recently tested with:
- - the "new codebase" (circa late February 2020)
- - a slightly older database dump (July 30, 2019, md5: 
- `77966af4479af6a1dd1b6510d61e2c70`)
- - ElementaryOS (Basically Ubuntu)
+
 ### Table of Contents
 1) [Pre-migration scripts](#1-pre-migration-scripts)
 2) [Pre-migration manual steps](#2-pre-migration-manual-steps)
@@ -49,7 +45,7 @@ It was most recently tested with:
 6. Directory Creation
    - ensure that the directory  `sites/default/files/tripal_organism` exists and is writable by the webserver within the Drupal installation
 ## 3. The migration
-*Most of this takes place on the website*
+*Most of this takes place on the website. When prompted, you should spawn jobs via Drush on the command line. This provides the benefit of seeing the results/errors of jobs as they run. The Tripal Jobs page is not reliable for reporting job activity and progress.*
 1. Prepare the site with Tripal and Chado
    - Alerts on the site will have you prepare the site for Tripal and Chado, or navigate to `admin/tripal/storage/chado/prepare` and follow the on-screen instructions
 2. Upgrade the site with Chado 1.3 (Currently 1.2)
@@ -80,13 +76,16 @@ It was most recently tested with:
 1. Enable
    - This is already done in the `post_migration.sh` script
 
-2. Add fields for Organism, Analysis, Gene, and mRNA
+2. Add fields for Organism, Analysis, Gene, mRNA, Project
    - Navigate to the T3 fields page, `admin/structure/bio_data`, and update the fields for Organism, Analysis, Gene, and mRNA
      - Scroll to 'Organism', click 'Manage Fields', and click "Check for new fields" on the new page.
      - Return to the previous page, scroll to Analysis, click 'Manage Fields', and click "Check for new fields" on the new page.
 
 3. Enable fields
    - For each of these content types, navigate to their respective 'Manage Display' tabs and organize the fields. This is purely a design choice at this point. An outline for this is provided in the [Tripal Content Type configuration](#Tripal-Content-Type-configuration) section.
+
+4. Apply/reapply Tripal Default Layout
+   - For certain content types, the Tripal default needs to be applied.  On the 'Manage Display' tab for those content types, click *Apply Tripal Default Layout*. 
 
 ##### Gene JBrowse Fields
 This module makes a field appear on Gene/Feature pages that consists of an iframe linking to the related jbrowse instance, configured by the module.
@@ -153,6 +152,8 @@ Click on the **Manage Fields** and **Manage Display** links/tabs for each conten
    - Organism
 
 ###### Gene
+
+###### mRNA
 
 ##### HTML
 The HTML formats have gotten stale (id vs machine_name). Full description [here](https://github.com/NAL-i5K/general_issues/issues/28#issuecomment-469293011)
