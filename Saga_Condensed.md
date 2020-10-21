@@ -8,6 +8,8 @@ This will be ***the*** document to follow along if you just want to do the migra
 4) [Post-migration scripts](#4-post-migration-scripts)
 5) [Post-migration manual steps](#5-post-migration-steps)
 
+<hr>
+
 ## 1. Pre-migration Scripts
 1. Install the Migration Module (i5k). In the modules directory:
 
@@ -17,6 +19,8 @@ This will be ***the*** document to follow along if you just want to do the migra
    - `chmod +x *.sh`
    - `./pre_migration.sh`
    - `./pre_migration_step2.sh`
+
+<hr>
 
 ## 2. Pre-migration manual steps
 1. Put the site into *Maintenance Mode*
@@ -67,12 +71,16 @@ This will be ***the*** document to follow along if you just want to do the migra
      - [ ] Unpublish Tripal v2 Content
      - [ ] Delete Tripal v2 Content 
 
+<hr>
+
 ## 4. Post-migration scripts
 1. `./post_migration.sh`
 2. `./post_migration_step2.sh`
 
+<hr>
+
 ## 5. Post Migration Steps
-##### Tripal Manage Analyses
+#### Tripal Manage Analyses
 1. Enable
    - This is already done in the `post_migration.sh` script
 
@@ -87,7 +95,7 @@ This will be ***the*** document to follow along if you just want to do the migra
 4. Apply/reapply Tripal Default Layout
    - For certain content types, the Tripal default needs to be applied.  On the 'Manage Display' tab for those content types, click *Apply Tripal Default Layout*. 
 
-##### Gene JBrowse Fields
+#### Gene JBrowse Fields
 This module makes a field appear on Gene/Feature pages that consists of an iframe linking to the related jbrowse instance, configured by the module.
 1. Install the module into your modules file
    - `git clone git@github.com:NAL-i5K/gene_jbrowse_field.git`
@@ -102,7 +110,9 @@ This module makes a field appear on Gene/Feature pages that consists of an ifram
 
 Gene pages should now render with an iframe featuring the corresponding Apollo instance for that organism.
 
-##### Tripal 3 Species Glossary
+<hr>
+
+#### Tripal 3 Species Glossary
 This module provides a glossary of all species on the site. This gets created as a view.
 1. Navigate to the directory where you store custom/contributed modules
 2. `git clone git@github.com:NAL-i5K/t3_species_glossary.git`
@@ -112,7 +122,9 @@ This creates a page at `/t3_species_glossary` (this can be changed later). Now w
 5. Click on the "edit" link for "Organisms" (second in list)
 6. Change the Path to `t3_species_glossary` and click Save
 
-##### Tripal Content Type configuration
+<hr>
+
+#### Tripal Content Type configuration
 In order to make our pages look presentable, we need to modify the current way they are configured.
 
 The settings for the page configuration can be found at `admin/structure/bio_data`.
@@ -124,7 +136,7 @@ Click on the **Manage Fields** and **Manage Display** links/tabs for each conten
  2. Manage Display tab: Use the following hierarchies to define what fields should be shown in what order and under what category (category is first level).
  3. Manage Display tab: Drag any fields not wanted to the area below the "Disabled" section (Manage Display).
 
-###### Organism
+##### Organism
  - Summary
    - Abbreviation (?)
    - Genus
@@ -144,18 +156,26 @@ Click on the **Manage Fields** and **Manage Display** links/tabs for each conten
    - Community contact
    - External links
 
-###### Analysis
+##### Analysis
  - Summary
    - Analysis name
    - Software
    - Materials and Methods
    - Organism
 
-###### Gene
+##### Gene
+ - Content goes here
 
-###### mRNA
+##### mRNA
+ - Content goes here
 
-##### HTML
+##### Biosamples (from EUtils)
+ *This content type may need to have its layout reset. If this is the case, perform the following steps:*
+  - On the 'Manage Display' tab for this content type, click `Apply Default Tripal Layout (will reset current layout)` followed by `Yes, apply layout`.*
+  - If after clearing the cache and refreshing, the layout is still not correct (for instance only the Summary tab appears), disabling all fields in 'Manage Display' tab, saving, and re-enabling the fields may work. 
+ 
+
+#### HTML
 The HTML formats have gotten stale (id vs machine_name). Full description [here](https://github.com/NAL-i5K/general_issues/issues/28#issuecomment-469293011)
 1. Navigate to `admin/config/content/formats`
 2. Rename text formats:
@@ -163,6 +183,6 @@ The HTML formats have gotten stale (id vs machine_name). Full description [here]
    - 'Full HTML' -> 'Full HTML Old'
 3. Recrease 'Filtered HTML' and 'Full HTML' with same options as the 'Old' versions
 
-##### CSS/Theming
+#### CSS/Theming
 This deals with a customized version of the i5k_bootstrap theme. It styles certain fields to be italic based on biological standards. The second post_migration script removes inline `<i></i>` tags from the database where they don't belong.
-Coming soon.
+The CSS used for this site will be responsible for applying italics to these strings.
