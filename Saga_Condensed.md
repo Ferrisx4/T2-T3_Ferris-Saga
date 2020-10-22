@@ -173,7 +173,8 @@ Click on the **Manage Fields** and **Manage Display** links/tabs for each conten
  *This content type may need to have its layout reset. If this is the case, perform the following steps:*
   - On the 'Manage Display' tab for this content type, click `Apply Default Tripal Layout (will reset current layout)` followed by `Yes, apply layout`.*
   - If after clearing the cache and refreshing, the layout is still not correct (for instance only the Summary tab appears), disabling all fields in 'Manage Display' tab, saving, and re-enabling the fields may work. 
- 
+
+ Work may be required to get Biosample pages to link to the associated Analysis page (they already link to the associated Organism).
 
 #### HTML
 The HTML formats have gotten stale (id vs machine_name). Full description [here](https://github.com/NAL-i5K/general_issues/issues/28#issuecomment-469293011)
@@ -186,3 +187,9 @@ The HTML formats have gotten stale (id vs machine_name). Full description [here]
 #### CSS/Theming
 This deals with a customized version of the i5k_bootstrap theme. It styles certain fields to be italic based on biological standards. The second post_migration script removes inline `<i></i>` tags from the database where they don't belong.
 The CSS used for this site will be responsible for applying italics to these strings.
+
+#### Permissions
+By default, Tripal does not automatically set content types to be viewable by anybody except for admin and tripal admin users. For content types that we want site visitors to see, we need to set these permissions. 
+ 1. Navigate to `admin/people/permissions` in the browser. 
+ 2. In the **Tripal** section, check the "ANONYMOUS USER" box for any content types you'd like users to be able to view (or otherwise access - be careful).
+    - *Organism:* View Content
