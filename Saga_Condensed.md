@@ -192,3 +192,7 @@ The CSS used for this site will be responsible for applying italics to these str
 By default, Tripal does not automatically set content types to be viewable by anybody except for admin and tripal admin users. For content types that we want site visitors to see, we need to set these permissions. 
  1. Navigate to `admin/people/permissions` in the browser. 
  2. In the **Tripal** section, check the "ANONYMOUS USER" box for any content types you'd like users to be able to view (or otherwise access - be careful).
+
+#### Tripal Registration
+ - For reporting purposes, the Tripal team wants sites to report back that they are using Tripal and how they are using it. It is optional.
+ For all development and testing purposes, we can Opt out, but for the final production version, we should register our use. To do this, follow the link that appears on every page (as admin). If this link does not appear for some reason, the site's registration status can be viewed and changed at `admin/tripal/register`.
