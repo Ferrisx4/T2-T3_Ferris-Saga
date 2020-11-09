@@ -85,7 +85,7 @@ This will be ***the*** document to follow along if you just want to do the migra
    - This is already done in the `post_migration.sh` script
 
 2. Add fields for Organism, Analysis, Gene, mRNA, Project
-   - Navigate to the T3 fields page, `admin/structure/bio_data`, and update the fields for Organism, Analysis, Gene, and mRNA
+   - Navigate to the T3 fields page, `admin/structure/bio_data`, and update the fields for Organism, Analysis, Gene, mRNA, Genome Assembly, and Genome Annotatin
      - Scroll to 'Organism', click 'Manage Fields', and click "Check for new fields" on the new page.
      - Return to the previous page, scroll to Analysis, click 'Manage Fields', and click "Check for new fields" on the new page.
 
@@ -120,7 +120,7 @@ This module provides a glossary of all species on the site. This gets created as
 This creates a page at `/t3_species_glossary` (this can be changed later). Now we must point the main menu "Organisms" button to this page instead of `/species`.
 4. Navigate to `/admin/structure/menu/manage/main-menu`
 5. Click on the "edit" link for "Organisms" (second in list)
-6. Change the Path to `t3_species_glossary` and click Save
+6. Change the Path to `t3_species_glossary` and click Save.
 
 <hr>
 
@@ -128,13 +128,25 @@ This creates a page at `/t3_species_glossary` (this can be changed later). Now w
 In order to make our pages look presentable, we need to modify the current way they are configured.
 
 The settings for the page configuration can be found at `admin/structure/bio_data`.
-Click on the **Manage Fields** and **Manage Display** links/tabs for each content type below. New groups may have to be added in order to satisfy the structure outlined below, which can be done on the corresponding Manage Display tab.
+Click on the **Manage Fields** and **Manage Display** links/tabs for each content type below. New groups may have to be added in order to satisfy the structure outlined below, which can be done on the corresponding Manage Display tab. 
 
+*These two tabs operate similarly to Apache's `-available` and `-enabled` module and config system—all available fields are listed on the **Manage Fields** tab and a field is either enabled or disabled in the **Manage Display** tab. Do not try to hide a field by deleting it.\ 
+  *
+
+*Note: for all content types, we need to hide empty fields. This involves the following steps:
+ - Navigate to `admin/structure/bio_data`
+ - For each content type, click "Edit".
+ - Check the box for 'Hide empty fields'.
+ - click 'Save Content Type' at the bottom. 
+
+** For each content type listed below **
  1. On the *Manage Display* page, the layout at the bottom may not be set correctly. **If and only if** this is the case, perform the following two steps
     1. Choose 'Tripal Feature Layout' from the dropdown and Save
     2. At the top, after saving, click `+ Apply Default Tripal Layout (will reset current layout)`
  2. Manage Display tab: Use the following hierarchies to define what fields should be shown in what order and under what category (category is first level).
  3. Manage Display tab: Drag any fields not wanted to the area below the "Disabled" section (Manage Display).
+ 4. Edit tab: check the box to `Hide empty fields` and click Save Content Type.
+
 
 ##### Organism
  - Summary
@@ -156,25 +168,45 @@ Click on the **Manage Fields** and **Manage Display** links/tabs for each conten
    - Community contact
    - External links
 
-##### Analysis
+##### Analysis/Genome Assembly/Genome Annotation
  - Summary
    - Analysis name
    - Software
    - Materials and Methods
    - Organism
+ - Relationship?
 
 ##### Gene
- - Content goes here
+ - Properties
+ - Relationship
+ - Transcripts
+ - External databases  ~~Cross references~~ (Post-migration problem due to missing db config: https://github.com/NAL-i5K/general_issues/issues/139).
+ - JBrowse
 
 ##### mRNA
- - Content goes here
+ - Properties
+   - Properties Table
+      - External Databases ~~Cross references~~ (not the Tripa pane)
+      - ?
+ - Sequence
+ - Summary
+   - Organism
+   - Name
+   - Identifier
 
 ##### Biosamples (from EUtils)
  *This content type may need to have its layout reset. If this is the case, perform the following steps:*
   - On the 'Manage Display' tab for this content type, click `Apply Default Tripal Layout (will reset current layout)` followed by `Yes, apply layout`.*
   - If after clearing the cache and refreshing, the layout is still not correct (for instance only the Summary tab appears), disabling all fields in 'Manage Display' tab, saving, and re-enabling the fields may work. 
 
+ Layout: 
+  - Properties
+    - ~~Full Ncbi Xml~~
+    - External Databases ~~Cross references~~
+
  Work may be required to get Biosample pages to link to the associated Analysis page (they already link to the associated Organism).
+
+<hr>
 
 #### HTML
 The HTML formats have gotten stale (id vs machine_name). Full description [here](https://github.com/NAL-i5K/general_issues/issues/28#issuecomment-469293011)
