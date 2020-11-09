@@ -1,6 +1,17 @@
 # Tripal 2 to 3 Migration - Condensed
 This will be ***the*** document to follow along if you just want to do the migration. No fluff!
 
+What this includes:
+ - Upgrade Tripal from version 2 to 3
+ - Upgrade Chado from version 1.2 to 1.3
+ - Modify content types to display appropriate fields
+ - Install tripal_manage_analysis
+ - Install t3_species_glossary
+
+What this does not include:
+ - Webserver configuration/file transfer
+ - Install Elasticsearch
+
 ### Table of Contents
 1) [Pre-migration scripts](#1-pre-migration-scripts)
 2) [Pre-migration manual steps](#2-pre-migration-manual-steps)
@@ -144,7 +155,7 @@ Click on the **Manage Fields** and **Manage Display** links/tabs for each conten
     1. Choose 'Tripal Feature Layout' from the dropdown and Save
     2. At the top, after saving, click `+ Apply Default Tripal Layout (will reset current layout)`
  2. Manage Display tab: Use the following hierarchies to define what fields should be shown in what order and under what category (category is first level).
- 3. Manage Display tab: Drag any fields not wanted to the area below the "Disabled" section (Manage Display).
+ 3. Manage Display tab: Drag any fields not wanted to the area below the "Disabled" section (Manage Display) and click Save. *Fields that are crossed out are to be renamed.*
  4. Edit tab: check the box to `Hide empty fields` and click Save Content Type.
 
 
@@ -187,8 +198,17 @@ Click on the **Manage Fields** and **Manage Display** links/tabs for each conten
  - Properties
    - Properties Table
       - External Databases ~~Cross references~~ (not the Tripa pane)
-      - ?
+      - Scaffold N50
+      - Community Contact
+      - GC Content
+      - Contig N50
+      - Number Of Genes
  - Sequence
+  - mRNA Sequence
+  - mRNA Sequence Length
+  - mRNA Sequence Coordinates
+  - Coding Sequence (CDS)
+  - Protein Sequence
  - Summary
    - Organism
    - Name
