@@ -50,8 +50,9 @@ What this does not include:
    `rm -rf tripal/`
 5. Get Tripal 3
 
-   - ~~`drush pm-download tripal-7.x-3.3` OR `git clone https://github.com/tripal/tripal.git`~~
-   - `git clone https://github.com/Ferrisx4/tripal` (until this fork gets accepted)
+   - `git clone https://github.com/tripal/tripal.git`
+   - Apply patches from [Tripal Install documentation](https://tripal.readthedocs.io/en/latest/user_guide/install_tripal/manual_install/install_tripal.html#apply-patches) (Postgres and Views patches)
+     - This step may have to be run slightly later depending on if the `views` module has been installed yet (TESTING)
    - `drush pm-enable tripal`
    - `drush pm-enable tripal_chado`
    - `drush pm-enable tripal_core, tripal_views, tripal_db, tripal_cv, tripal_analysis, tripal_organism, tripal_feature, tripal_pub, tripal_stock, tripal_ds`
