@@ -190,6 +190,9 @@ Click on the **Manage Fields** and **Manage Display** links/tabs for each conten
 
 ##### Gene
  - Properties
+ - Summary
+   - Organism
+   - Analysis
  - Relationship
  - Transcripts
  - External databases  ~~Cross references~~ (Post-migration problem due to missing db config: https://github.com/NAL-i5K/general_issues/issues/139).
@@ -249,3 +252,20 @@ By default, Tripal does not automatically set content types to be viewable by an
 #### Tripal Registration
  - For reporting purposes, the Tripal team wants sites to report back that they are using Tripal and how they are using it. It is optional.
  For all development and testing purposes, we can Opt out, but for the final production version, we should register our use. To do this, follow the link that appears on every page (as admin). If this link does not appear for some reason, the site's registration status can be viewed and changed at `admin/tripal/register`.
+
+ #### Tripal Alchemist
+Many analyses need to be converted to their appropriate type: **Genome Assembly** or **Genome Annotation**. Use the Tripal Alchemist module to perform this task with some degree of automation:
+ 1. On command line, navigate to where contributed modules are (typically the same directory where the Tripal module is).
+ 2. `git clone git@github.com:statonlab/tripal_alchemist.git`
+ 3. `drush pm-enable tripal_alchemist -y`
+ 4. On the site, navigate to /admin/tripal/extension/tripal_alchemist
+ 5. Select the 'Manual' for *Transformation method* and 'Analysis' for the *Source Bundle*
+ 6. Select 'Genome Annotation' for the *Destination Bundle* when it appears.
+ 7. Check the box for all Analyses that seem to be Genome Annotations. When unsure, Annotation typically overrides Assembly:
+    - `BCM annotation of the Oncopeltus fasciatus assembly using Maker and additional analyses` would be an Annotation, not an Assembly
+ 8. Click 'Transform (Submit)'
+ 9. Repeat steps 5-8 for 'Genome Assembly' type instead of 'Genome Annotation'
+ 
+
+
+ The transformation step is set up to run the next time that the Drupal cron gets run, and not with a specific Tripal Job.
