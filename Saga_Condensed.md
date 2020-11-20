@@ -94,7 +94,7 @@ What this does not include:
 ## 5. Post Migration Steps
 #### Tripal Manage Analyses
 1. Enable
-   - This is already done in the `post_migration.sh` script
+   - This is already done in the `post_migration.sh` script. Don't worry about populating the *analysis_organism* materialized view, that is also done automatically in the above script.
 
 2. Add fields for Organism, Analysis, Gene, mRNA, Project
    - Navigate to the T3 fields page, `admin/structure/bio_data`, and update the fields for Organism, Analysis, Gene, mRNA, Genome Assembly, and Genome Annotatin
