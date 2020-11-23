@@ -182,11 +182,11 @@ Click on the **Manage Fields** and **Manage Display** links/tabs for each conten
 
 ##### Analysis/Genome Assembly/Genome Annotation
  - Summary
-   - Analysis name
-   - Software
-   - Materials and Methods
+   - Name
+   - Program, Pipeline, Workflow or Method name
+   - Data Source
    - Organism
- - Relationship?
+ - Relationship
 
 ##### Gene
  - Properties
@@ -200,19 +200,13 @@ Click on the **Manage Fields** and **Manage Display** links/tabs for each conten
 
 ##### mRNA
  - Properties
-   - Properties Table
-      - External Databases ~~Cross references~~ (not the Tripa pane)
-      - Scaffold N50
-      - Community Contact
-      - GC Content
-      - Contig N50
-      - Number Of Genes
+   - ?
  - Sequence
-  - mRNA Sequence
-  - mRNA Sequence Length
-  - mRNA Sequence Coordinates
-  - Coding Sequence (CDS)
-  - Protein Sequence
+   - mRNA Sequence
+   - mRNA Sequence Length
+   - mRNA Sequence Coordinates
+   - Coding Sequence (CDS)
+   - Protein Sequence
  - Summary
    - Organism
    - Name
