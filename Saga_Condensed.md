@@ -194,6 +194,7 @@ Click on the **Manage Fields** and **Manage Display** links/tabs for each conten
    - Organism
    - Analysis
  - Relationship
+   - Relationship (*Note: on the **Manage Fields** tab, the Format must be set to 'Relationship Table by Type'*)
  - Transcripts
  - External databases  ~~Cross references~~ (Post-migration problem due to missing db config: https://github.com/NAL-i5K/general_issues/issues/139).
  - JBrowse
