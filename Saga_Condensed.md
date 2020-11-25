@@ -138,6 +138,19 @@ This creates a page at `/t3_species_glossary` (this can be changed later). Now w
 
 <hr>
 
+#### Tripal HQ and Tripal EUtils
+These two modules, as well as any related or supporting modules, were installed as part of the Post Installation script section.
+##### Tripal Eutils
+Configuration for this module is simply an optional API key from NCBI. Providing an API key lets the module access the resource at a faster rate. The process for obtaining one if you do not have one can be obtained [here](https://ncbiinsights.ncbi.nlm.nih.gov/2017/11/02/new-api-keys-for-the-e-utilities/).
+
+Once an API key is obtained, it may be saved to the site by browsing to `admin/tripal/tripal_eutils`.
+
+##### Tripal HQ
+Tripal HQ requires some configuration, mainly for permissions. See [this documentation](https://tripal-hq.readthedocs.io/en/latest/setup/permissions.html) for an in-depth guide.
+This module also utilizes the Field Permissions module. Configuration details to come. 
+
+<hr>
+
 #### Tripal Content Type configuration
 In order to make our pages look presentable, we need to modify the current way they are configured.
 
