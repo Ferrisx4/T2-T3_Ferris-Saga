@@ -113,9 +113,11 @@ This module makes a field appear on Gene/Feature pages that consists of an ifram
    - `git clone git@github.com:NAL-i5K/gene_jbrowse_field.git`
    - `drush pm-enable gene_jbrowse_field`
 2. Navigate to the configuration page - Tripal -> Extensions -> Gene Jbrowse Field Configuration
-   - In the URL Template field, paste the following:
-    `https://apollo.nal.usda.gov/apollo/[Genus]%20[species]/jbrowse/?loc=[gene name]-RA` 
-    and click Save. 
+   - In the Gene Page URL Template field, paste the following:
+    `https://apollo.nal.usda.gov/apollo/[Genus]_[species]/jbrowse/?loc=[child sequence name]` 
+   - In the mRNA Page URL Template field, paste the following:
+    `https://apollo.nal.usda.gov/apollo/[Genus]_[species]/jbrowse/?loc=[uniquename]`
+   - Hit 'Save' 
 3. Navigate to `admin/structure/bio_data` and click on "manage fields" for the Gene type.
    - Click on ```+ Check for new fields```.
    - `local__jbrowse_link` should be added, along with a few others.
@@ -162,7 +164,7 @@ Click on the **Manage Fields** and **Manage Display** links/tabs for each conten
 
 ##### Organism
  - Summary
-   - Abbreviation (?)
+   - Resource Type (to be removed later, maybe)
    - Genus
    - Species
    - Common name
@@ -174,44 +176,61 @@ Click on the **Manage Fields** and **Manage Display** links/tabs for each conten
  - Assembly Stats
    - Contig N50
    - Scaffold N50
-   - Number of Genes
    - GC Content
  - Other information
    - Community contact
    - External links
 
 ##### Analysis/Genome Assembly/Genome Annotation
- - Summary
+ - Summary Table (not the Tripal Pane)
+   - Resource Type
    - Name
    - Program, Pipeline, Workflow or Method name
+   - Program Version
    - Data Source
    - Organism
- - Relationship
+   - Description
+   - Algorithm
 
 ##### Gene
- - Properties
  - Summary
+   - Resource Type
+   - Name
+   - Identifier
    - Organism
    - Analysis
- - Relationship
-   - Relationship (*Note: on the **Manage Fields** tab, the Format must be set to 'Relationship Table by Type'*)
- - Transcripts
- - External databases  ~~Cross references~~ (Post-migration problem due to missing db config: https://github.com/NAL-i5K/general_issues/issues/139).
+   - Sequence Coordinates
+   - Is Obsolete
+   - Time Accessioned (Format as plain on Manage Fields tab)
+   - Time Last Modified (Format as plain on Manage Fields tab)
+ - Properties
+   - Cross Reference, **rename to External Databases** (Post-migration problem due to missing db config: https://github.com/NAL-i5K/general_issues/issues/139).
+   - Any fields where Format is Chado Property, *except Accession*
+ - Transcripts (Format: Tripal pane)
+   - Transcripts (Format: Transcript, #)
  - JBrowse
 
 ##### mRNA
- - Properties
-   - ?
- - Sequence
-   - mRNA Sequence
-   - mRNA Sequence Length
-   - mRNA Sequence Coordinates
-   - Coding Sequence (CDS)
-   - Protein Sequence
  - Summary
-   - Organism
+   - Resource Type
    - Name
    - Identifier
+   - Organism
+   - Analyses
+   - Relationship (not the Tripal Pane)
+   - Is Obsolete
+   - Time Accessioned (Format as plain on Manage Fields tab)
+   - Time Last Modified (Format as plain on Manage Fields tab)
+ - Sequences
+   - Sequence, rename to **mRNA Sequence**
+   - Sequence Length, rename to **mRNA Sequence Length**
+   - Sequence Coordinates, rename to **mRNA Sequence Coordinates**
+   - Coding Sequence (CDS)
+   - Protein Sequence
+ - Properties
+   - Cross References, rename to **External Databases**
+   - Any fields where Format is Chado Property
+ - JBrowse
 
 ##### Biosamples (from EUtils)
  *This content type may need to have its layout reset. If this is the case, perform the following steps:*
