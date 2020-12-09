@@ -265,7 +265,7 @@ The HTML formats have gotten stale (id vs machine_name). Full description [here]
 2. Rename text formats:
    - 'Filtered HTML' -> 'Filtered HTML Old'
    - 'Full HTML' -> 'Full HTML Old'
-3. Recrease 'Filtered HTML' and 'Full HTML' with same options as the 'Old' versions
+3. Recreate 'Filtered HTML' and 'Full HTML' with same options as the 'Old' versions
 
 #### CSS/Theming
 This deals with a customized version of the i5k_bootstrap theme. It styles certain fields to be italic based on biological standards. The second post_migration script removes inline `<i></i>` tags from the database where they don't belong.
