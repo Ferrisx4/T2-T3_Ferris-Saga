@@ -221,7 +221,8 @@ Click on the **Manage Fields** and **Manage Display** links/tabs for each conten
    - Any fields where Format is Chado Property, *except Accession*
  - Transcripts (Format: Tripal pane)
    - Transcripts (Format: Transcript, #)
- - JBrowse
+ - JBrowse (Tripal Pane)
+   - JBrowse
 
 ##### mRNA
  - Summary
@@ -243,7 +244,8 @@ Click on the **Manage Fields** and **Manage Display** links/tabs for each conten
  - Properties
    - Cross References, rename to **External Databases**
    - Any fields where Format is Chado Property
- - JBrowse
+ - JBrowse (Tripal Pane)
+   - JBrowse
 
 ##### Biosamples (from EUtils)
  *This content type may need to have its layout reset. If this is the case, perform the following steps:*
