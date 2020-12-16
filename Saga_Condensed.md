@@ -55,7 +55,7 @@ What this does not include:
      - This step may have to be run slightly later depending on if the `views` module has been installed yet (TESTING)
    - `drush pm-enable tripal`
    - `drush pm-enable tripal_chado`
-   - `drush pm-enable tripal_core, tripal_views, tripal_db, tripal_cv, tripal_analysis, tripal_organism, tripal_feature, tripal_pub, tripal_stock, tripal_ds`
+   - `drush pm-enable tripal_core, tripal_views, tripal_db, tripal_cv, tripal_analysis, tripal_organism, tripal_feature, tripal_pub, tripal_stock, tripal_ds, tripal_ws`
    - `drush updatedb` just in case (it will complain that you should, but might not have updates)
 
 6. Directory Creation
