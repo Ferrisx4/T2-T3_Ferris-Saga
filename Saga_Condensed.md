@@ -81,7 +81,7 @@ What this does not include:
      - [x] Copy Title over to Tripal v3 Content
      - [x] Migrate URL Alias to Tripal v3 Content
      - [ ] Unpublish Tripal v2 Content
-     - [ ] Delete Tripal v2 Content 
+     - [x] Delete Tripal v2 Content 
 
 <hr>
 
