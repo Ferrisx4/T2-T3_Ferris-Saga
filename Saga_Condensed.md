@@ -18,6 +18,9 @@ What this does not include:
 3) [The migration](#3-the-migration)
 4) [Post-migration scripts](#4-post-migration-scripts)
 5) [Post-migration manual steps](#5-post-migration-steps)
+   - [Additional modules](#additional-modules)
+   - [Tripal Content Type configuration](#tripal-content-type-configuration)
+   - [Other Configurations](#other-configurations)
 
 <hr>
 
@@ -81,7 +84,7 @@ What this does not include:
      - [x] Copy Title over to Tripal v3 Content
      - [x] Migrate URL Alias to Tripal v3 Content
      - [ ] Unpublish Tripal v2 Content
-     - [x] Delete Tripal v2 Content 
+     - [ ] Delete Tripal v2 Content 
 
 <hr>
 
@@ -92,6 +95,9 @@ What this does not include:
 <hr>
 
 ## 5. Post Migration Steps
+
+### Additional Modules
+
 #### Tripal Manage Analyses
 1. Enable
    - This is already done in the `post_migration.sh` script. Don't worry about populating the *analysis_organism* materialized view, that is also done automatically in the above script.
@@ -107,7 +113,33 @@ What this does not include:
 4. Apply/reapply Tripal Default Layout
    - For certain content types, the Tripal default needs to be applied.  On the 'Manage Display' tab for those content types, click *Apply Tripal Default Layout*. 
 
-#### Gene JBrowse Fields
+#### Tripal HQ and Tripal EUtils
+These two modules, as well as any related or supporting modules, were installed as part of the Post Installation script section.
+##### Tripal Eutils
+Configuration for this module is simply an optional API key from NCBI. **This will be supplied by Monica.** Providing an API key lets the module access the resource at a faster rate. The process for obtaining one if you do not have one can be obtained [here](https://ncbiinsights.ncbi.nlm.nih.gov/2017/11/02/new-api-keys-for-the-e-utilities/).
+
+Once an API key is obtained, it may be saved to the site by browsing to `admin/tripal/tripal_eutils`.
+
+##### Tripal HQ
+Tripal HQ requires some configuration, mainly for permissions. See [this documentation](https://tripal-hq.readthedocs.io/en/latest/setup/permissions.html) for an in-depth guide.
+This module also utilizes the Field Permissions module. Configuration details to come.
+
+ ##### Tripal Alchemist
+Many analyses need to be converted to their appropriate type: **Genome Assembly** or **Genome Annotation**. Use the Tripal Alchemist module to perform this task with some degree of automation:
+ 1. On command line, navigate to where contributed modules are (typically the same directory where the Tripal module is).
+ 2. `git clone git@github.com:statonlab/tripal_alchemist.git`
+ 3. `drush pm-enable tripal_alchemist -y`
+ 4. On the site, navigate to /admin/tripal/extension/tripal_alchemist
+ 5. Select the 'Manual' for *Transformation method* and 'Analysis' for the *Source Bundle*
+ 6. Select 'Genome Annotation' for the *Destination Bundle* when it appears.
+ 7. Check the box for all Analyses that seem to be Genome Annotations. When unsure, Annotation typically overrides Assembly:
+    - `BCM annotation of the Oncopeltus fasciatus assembly using Maker and additional analyses` would be an Annotation, not an Assembly
+ 8. Click 'Transform (Submit)'
+ 9. Repeat steps 5-8 for 'Genome Assembly' type instead of 'Genome Annotation'
+
+  The transformation step is set up to run the next time that the Drupal cron gets run, and not with a specific Tripal Job.
+
+ ##### Gene JBrowse Fields
 This module makes a field appear on Gene/Feature pages that consists of an iframe linking to the related jbrowse instance, configured by the module.
 1. Install the module into your modules file
    - `git clone git@github.com:NAL-i5K/gene_jbrowse_field.git`
@@ -124,8 +156,6 @@ This module makes a field appear on Gene/Feature pages that consists of an ifram
 
 Gene pages should now render with an iframe featuring the corresponding Apollo instance for that organism.
 
-<hr>
-
 #### Tripal 3 Species Glossary
 This module provides a glossary of all species on the site. This gets created as a view.
 1. Navigate to the directory where you store custom/contributed modules
@@ -138,20 +168,7 @@ This creates a page at `/t3_species_glossary` (this can be changed later). Now w
 
 <hr>
 
-#### Tripal HQ and Tripal EUtils
-These two modules, as well as any related or supporting modules, were installed as part of the Post Installation script section.
-##### Tripal Eutils
-Configuration for this module is simply an optional API key from NCBI. **This will be supplied by Monica.** Providing an API key lets the module access the resource at a faster rate. The process for obtaining one if you do not have one can be obtained [here](https://ncbiinsights.ncbi.nlm.nih.gov/2017/11/02/new-api-keys-for-the-e-utilities/).
-
-Once an API key is obtained, it may be saved to the site by browsing to `admin/tripal/tripal_eutils`.
-
-##### Tripal HQ
-Tripal HQ requires some configuration, mainly for permissions. See [this documentation](https://tripal-hq.readthedocs.io/en/latest/setup/permissions.html) for an in-depth guide.
-This module also utilizes the Field Permissions module. Configuration details to come. 
-
-<hr>
-
-#### Tripal Content Type configuration
+### Tripal Content Type configuration
 In order to make our pages look presentable, we need to modify the current way they are configured.
 
 The settings for the page configuration can be found at `admin/structure/bio_data`.
@@ -261,6 +278,8 @@ Click on the **Manage Fields** and **Manage Display** links/tabs for each conten
 
 <hr>
 
+### Other Configurations
+
 #### HTML
 The HTML formats have gotten stale (id vs machine_name). Full description [here](https://github.com/NAL-i5K/general_issues/issues/28#issuecomment-469293011)
 1. Navigate to `admin/config/content/formats`
@@ -268,10 +287,6 @@ The HTML formats have gotten stale (id vs machine_name). Full description [here]
    - 'Filtered HTML' -> 'Filtered HTML Old'
    - 'Full HTML' -> 'Full HTML Old'
 3. Recreate 'Filtered HTML' and 'Full HTML' with same options as the 'Old' versions
-
-#### CSS/Theming
-This deals with a customized version of the i5k_bootstrap theme. It styles certain fields to be italic based on biological standards. The second post_migration script removes inline `<i></i>` tags from the database where they don't belong.
-The CSS used for this site will be responsible for applying italics to these strings.
 
 #### Permissions
 By default, Tripal does not automatically set content types to be viewable by anybody except for admin and tripal admin users. For content types that we want site visitors to see, we need to set these permissions. 
@@ -282,19 +297,10 @@ By default, Tripal does not automatically set content types to be viewable by an
  - For reporting purposes, the Tripal team wants sites to report back that they are using Tripal and how they are using it. It is optional.
  For all development and testing purposes, we can Opt out, but for the final production version, we should register our use. To do this, follow the link that appears on every page (as admin). If this link does not appear for some reason, the site's registration status can be viewed and changed at `admin/tripal/register`.
 
- #### Tripal Alchemist
-Many analyses need to be converted to their appropriate type: **Genome Assembly** or **Genome Annotation**. Use the Tripal Alchemist module to perform this task with some degree of automation:
- 1. On command line, navigate to where contributed modules are (typically the same directory where the Tripal module is).
- 2. `git clone git@github.com:statonlab/tripal_alchemist.git`
- 3. `drush pm-enable tripal_alchemist -y`
- 4. On the site, navigate to /admin/tripal/extension/tripal_alchemist
- 5. Select the 'Manual' for *Transformation method* and 'Analysis' for the *Source Bundle*
- 6. Select 'Genome Annotation' for the *Destination Bundle* when it appears.
- 7. Check the box for all Analyses that seem to be Genome Annotations. When unsure, Annotation typically overrides Assembly:
-    - `BCM annotation of the Oncopeltus fasciatus assembly using Maker and additional analyses` would be an Annotation, not an Assembly
- 8. Click 'Transform (Submit)'
- 9. Repeat steps 5-8 for 'Genome Assembly' type instead of 'Genome Annotation'
- 
-
-
- The transformation step is set up to run the next time that the Drupal cron gets run, and not with a specific Tripal Job.
+ #### Tripal 2 Content Removal
+ The final step, once the site is looking good and everything is configured, is to delete the old Tripal 2 content. 
+ 1. Navigate to `/admin/tripal/storage/chado/migrate`
+ 2. On the **Step 4** tab, check "Unpublish Tripal v2 Content" under *All*
+ 3. ```drush trp-run-jobs --username=admin --root=/var/www/i5k```
+ 4. On the **Step 4** tab, check "Delete Tripal v2 Content" under *All*
+ 5. ```drush trp-run-jobs --username=admin --root=/var/www/i5k``` This may take a while.
