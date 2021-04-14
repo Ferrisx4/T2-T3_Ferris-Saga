@@ -146,9 +146,9 @@ This module makes a field appear on Gene/Feature pages that consists of an ifram
    - `drush pm-enable gene_jbrowse_field`
 2. Navigate to the configuration page - Tripal -> Extensions -> Gene Jbrowse Field Configuration
    - In the Gene Page URL Template field, paste the following:
-    `https://apollo.nal.usda.gov/apollo/[Genus]_[species]/jbrowse/?loc=[child sequence name]` 
+    `/apollo2_redirect/[Genus]_[species]/jbrowse/?loc=[child sequence name]`
    - In the mRNA Page URL Template field, paste the following:
-    `https://apollo.nal.usda.gov/apollo/[Genus]_[species]/jbrowse/?loc=[uniquename]`
+    `/apollo2_redirect/[Genus]_[species]/jbrowse/?loc=[uniquename]`
    - Hit 'Save' 
 3. Navigate to `admin/structure/bio_data` and click on "manage fields" for the Gene type.
    - Click on ```+ Check for new fields```.
