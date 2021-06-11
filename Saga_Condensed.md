@@ -184,7 +184,7 @@ Click on the **Manage Fields** and **Manage Display** links/tabs for each conten
  - click 'Save Content Type' at the bottom. 
 
 ** For each content type listed below **
- 1. On the *Manage Display* page, the layout at the bottom may not be set correctly. **If and only if** this is the case, perform the following two steps
+ 1. On the *Manage Display* page, the layout at the bottom may not be set correctly. Perform the following two steps:
     1. Choose 'Tripal Feature Layout' from the dropdown and Save
     2. At the top, after saving, click `+ Apply Default Tripal Layout (will reset current layout)`
  2. Manage Display tab: Use the following hierarchies to define what fields should be shown in what order and under what category (category is first level).
